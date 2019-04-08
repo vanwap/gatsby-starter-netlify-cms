@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
-export const FaqPageTemplate = ({ title, content, contentComponent }) => {
+export const FaqPageTemplate = ({ title, content, contentComponent, qaContainer }) => {
   const PageContent = contentComponent || Content
 
   return (
@@ -17,6 +17,7 @@ export const FaqPageTemplate = ({ title, content, contentComponent }) => {
                 {title}
               </h2>
               <PageContent className="content" content={content} />
+              <Features gridItems={qaContainer.qa} />
             </div>
           </div>
         </div>
@@ -29,6 +30,9 @@ FaqPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
   contentComponent: PropTypes.func,
+  qaContainer: PropTypes.shape({
+    qa: PropTypes.array,
+  }),
 }
 
 const FaqPage = ({ data }) => {
@@ -40,6 +44,7 @@ const FaqPage = ({ data }) => {
         contentComponent={HTMLContent}
         title={post.frontmatter.title}
         content={post.html}
+        qaContainer={post.frontmatter.qaContainer}
       />
     </Layout>
   )
@@ -57,6 +62,12 @@ export const FaqPageQuery = graphql`
       html
       frontmatter {
         title
+        qaContainer {
+          qa {
+            question
+            answer 
+          }
+        }
       }
     }
   }
