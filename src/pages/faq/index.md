@@ -1,17 +1,12 @@
 ---
-templateKey: 'faq-page'
-path: /faq
+templateKey: faq-page
 title: Frequently Asked Questions
 qaContainer:
   qa:
-    - question: >
-        Test1
-      answer: >
-        Test2
-    - question: >
-        Test3
-      answer: >
-        Test4
+    - answer: Answer 1
+      question: Question 1
+    - answer: Answer 2
+      question: Question 2
 ---
 ### Test faq 1
 Test abc
