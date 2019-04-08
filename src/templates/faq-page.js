@@ -17,7 +17,7 @@ export const FaqPageTemplate = ({ title, content, contentComponent, qaContainer 
                 {title}
               </h2>
               <PageContent className="content" content={content} />
-              <Features gridItems={qaContainer.qa} />
+              <PageContent className="qa" content={qaContainer} />
             </div>
           </div>
         </div>
@@ -62,12 +62,6 @@ export const FaqPageQuery = graphql`
       html
       frontmatter {
         title
-        qaContainer {
-          qa {
-            question
-            answer 
-          }
-        }
       }
     }
   }
